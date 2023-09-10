@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>마이페이지</h1>
+    <h3>아이디 : {{request.user.username}}</h3>
+    <h3>이메일 : {{request.user.email}}</h3>
+    <!-- <input type="submit" value="수정하기"> -->
+    <img src="/media/{{todo.image}}" alt="">
+    <input type="file" name="profile_pic" placeholder="프로필사진"/>
+</body>
+</html>

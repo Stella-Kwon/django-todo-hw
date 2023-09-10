@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form action="/users/signup/" method ="POST">
+        {%csrf_token%}
+        {%if messages%}
+        <ul class="messages">
+            {%for message in messages%}
+            <li {%if message.tags %} class="{{message.tags}}" {%endif%}>{{message}}</li>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        <input type="text" name = "username" placeholder="아이디" required/>
+        <input type="email" name="email" placeholder="이메일" required/>
+        <input type="password" name="password" placeholder="비밀번호" required/>
+        <input type="submit" value="회원가입"/>
+    </form>
+</body>
+</html>

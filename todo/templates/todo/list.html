@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <div class="login_authorize" id="login_authorize">
+        {%if request.user.is_authenticated%}
+        {{request.user.username}}님, 반갑습니다!
+        <div class="myprofile"><a href="/todo/myprofile/"><button>마이페이지</button></a></div>
+        <form action="/users/logout/" method="post">
+        {%csrf_token%}
+            <button>로그아웃</button>
+        </form>
+         <div class="myposts"><a href="/todo/myposts/"><button>내 글 모아보기</button></a></div>
+        
+        {%else%}
+        <div>권한이 없습니다. 회원가입 또는 로그인 하러 가주 십시오.</div>
+        <a href="/users/signup/"><button>회원가입</button></a>
+        <a href="/users/login/"><button>로그인</button></a>
+        {%endif%}
+    </div>
+    <div class="todo_list">
+        <ul>
+            {% for list in todo%}
+            <a href="/todo/{{list.id}}/">
+                <li><h3>{{list.title}}</h3></li>
+            </a>
+            <p>글쓴이: {{list.author}}</p>
+            <div>생성일자:::{{list.created_at}}</div>
+            <div>수정일자:::{{list.updated_at}}</div>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class="create_new_button">
+        <a href="/todo/create/">
+            <button>새로만들기</button>
+        </a>
+    </div>
+</body>
+
+</html>

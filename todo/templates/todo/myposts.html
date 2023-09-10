@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><내글 모아보기></h1>
+    <h3>{{request.user.username}}이 글입니다!</h3>
+    {%for todo in todos%}
+        <ul class="myposts">
+            <a href="/todo/{{todo.id}}/">
+            <li>
+                <h3>{{todo.title}}</h3>
+            </li>
+            </a>
+            <p>글쓴이: {{todo.author}}</p>
+            <div>생성일자:::{{todo.created_at}}</div>
+            <div>수정일자:::{{todo.updated_at}}</div>
+        </ul>
+    {%endfor%}
+    <div class="목록">
+        <a href="/todo/">
+            <input type="submit" value="목록" />
+        </a>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+
+<body>
+    <h1>새로운 할 일 추가</h1>
+    <form action="/todo/create/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4>글쓴이:: {{request.user.username}}</h4>
+        <p>아래칸에 텍스트를 작성하세요.</p>
+        제목:
+        <input type="text" name="title" required />
+        
+        할일:
+        <input type="text" name="contents" required />
+        이미지:
+        <input type="file" name="image"/>
+        <!-- <input type="file" name="file"/> -->
+        <button type="submit">생성</button>
+    </form>
+
+</body>
+
+</html>

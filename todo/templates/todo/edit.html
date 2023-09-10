@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo_list{{todo.id}}번쨰</h1>
+    <form action="/todo/edit/{{todo.id}}/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        제목: <input type="text" , name="title" , value="{{todo.context}}" />
+        컨텐츠: <input type="text" , name="context" , value="{{todo.context}}" />
+        이미지: <input type="file" , name="image" , value="{{todo.image}}"> 
+        <p>생성일자:{{todo.created_at}}</p>
+        <p>수정일자:{{todo.updated_at}}</p>
+        <input type="submit" value="저장"/>
+    </form>
+    
+</body>
+</html>
